@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MainProviders from "@/providers/provider";
-import { Suspense } from "react";
-import { Loading } from "./Loading";
+import Layout from "@/components/Layout/Layout";
+import ListFetch from "@/Services/ListFetch";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,21 +21,24 @@ export const metadata: Metadata = {
 };
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const getProfileData = await ListFetch.getProfileData()
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       <MainProviders>
-        <Suspense fallback={<Loading />}>
-        {children}
-        </Suspense>
-       </MainProviders>
+        <MainProviders>
+          <Layout profile={getProfileData}>
+            {children}
+          </Layout>
+        </MainProviders>
       </body>
     </html>
   );

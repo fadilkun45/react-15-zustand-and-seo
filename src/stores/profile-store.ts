@@ -1,6 +1,5 @@
 import { createStore } from "zustand";
 
-
 // state
 export type ProfileState = {
     profile: any;
@@ -8,7 +7,7 @@ export type ProfileState = {
 
 // actions
 export type ProfileActions = {
-    setProfile: () => void
+    setProfile: (parms: any) => void
 }
 
 export type ProfileStore = ProfileState & ProfileActions
@@ -16,6 +15,6 @@ export type ProfileStore = ProfileState & ProfileActions
 export const createProfileStore = () => {
     return createStore<ProfileStore>((set) => ({
         profile: [],
-        setProfile: () => set((state) => ({ setProfile: state.setProfile}))
+        setProfile: (setProfile) => set(() => ({ profile: setProfile }))
     }))
 }

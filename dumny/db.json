@@ -1,0 +1,22 @@
+{
+  "profile": {
+    "nama": "Faldi Ramadhan",
+    "umur": 25,
+    "alamat": "Jl. Raya No. 123",
+    "hobi": [
+      "Membaca",
+      "Bermain Game",
+      "Menonton Film"
+    ]
+  },
+  "posting": [
+    {
+      "id": 1,
+      "content": "p"
+    },
+    {
+      "id": 2,
+      "content": "testing"
+    }
+  ]
+}
